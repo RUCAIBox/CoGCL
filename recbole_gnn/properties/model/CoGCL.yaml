@@ -1,0 +1,35 @@
+embedding_size: 64
+n_layers: 3
+reg_weight: 1e-04
+require_pow: True
+
+
+user_code_num: 4
+item_code_num: 4
+user_code_size: 256
+item_code_size: 256
+gnn_transform: "code_positive"
+
+
+code_dist: 'cos'   # 'cos' or 'l2'
+code_dist_tau: 0.2
+code_batch_size: 10240
+vq_type: 'rq'     # 'rq' or 'pq'
+vq_ema: False
+
+
+vq_loss_weight: 1.0
+cl_weight: 0.1
+sim_cl_weight: 0
+cl_tau: 0.2
+
+data_aug_delay: 0
+graph_replace_p: 0.2
+graph_add_p: 0.2
+
+drop_p: 0.1
+drop_fwd: True
+
+min_epoch: 30
+
+

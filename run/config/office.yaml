@@ -1,0 +1,67 @@
+dataset: 'office'
+data_path: '../datasets/'
+save_dataset: True
+
+
+
+gpu_id: '6'
+worker: 8
+
+# Atomic File Format
+field_separator: "\t"
+seq_separator: " "
+
+# Common Features
+USER_ID_FIELD: user_id
+ITEM_ID_FIELD: item_id
+RATING_FIELD: rating
+TIME_FIELD: timestamp
+NEG_PREFIX: neg_
+ITEM_LIST_LENGTH_FIELD: item_length
+LIST_SUFFIX: _list
+MAX_ITEM_LIST_LENGTH: 50
+POSITION_FIELD: position_id
+LABEL_FIELD: label
+load_col:
+    inter: [user_id, item_id, rating]
+
+unused_col:
+    inter: [rating]
+
+# training and evaluation
+train_batch_size: 4096
+eval_batch_size: 40960000
+metrics: ["Recall","NDCG"]  # (list or str) Evaluation metrics.
+topk: [5,10,20,50]
+valid_metric: NDCG@10
+eval_args:                      # (dict) 4 keys: group_by, order, split, and mode
+  split: {'RS':[0.8,0.1,0.1]}   # (dict) The splitting strategy ranging in ['RS','LS'].
+  group_by: user                # (str) The grouping strategy ranging in ['user', 'none'].
+  order: RO                     # (str) The ordering strategy ranging in ['RO', 'TO'].
+  mode: full
+
+
+train_neg_sample_args:
+    distribution: uniform
+    sample_num: 1
+    dynamic: False
+
+
+#
+benchmark_filename: [train, valid, test]
+
+
+
+embedding_size: 64
+hidden_size: 64
+n_layers: 3
+
+epochs: 1000
+stopping_step: 15
+min_epoch: 40
+
+
+
+
+
+
