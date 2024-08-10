@@ -300,7 +300,6 @@ class VectorQuantizer(nn.Module):
 
         x_q = x + (x_q - x).detach()
 
-        # x_q = F.normalize(x_q, dim=-1)
 
         indices = indices.view(x.shape[:-1])
 

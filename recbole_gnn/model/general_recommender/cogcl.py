@@ -222,8 +222,7 @@ class CoGCL(GeneralGraphRecommender):
                 sim = (batch_ucodes.unsqueeze(-1) == block.T.unsqueeze(0)).to(torch.int).sum(dim=1)
                 batch_sim.append(sim)
                 k += batch_size
-            # # B, 4, 1 == 1, 4, N   ->   B, 4, N   ->  B, N
-            # sim = (batch_ucodes.unsqueeze(-1) == all_user_codes.T.unsqueeze(0)).to(torch.int).sum(dim=1)
+            # several B, B   ->    B, N
             batch_sim = torch.cat(batch_sim, dim=1)
             batch_sim[:, 0] = 0
 
@@ -299,16 +298,16 @@ class CoGCL(GeneralGraphRecommender):
             aug_inter_row = []
             aug_inter_col = []
 
-            aug_row = row[item_aug_idx]
-            aug_col = col[item_aug_idx]
+            aug_row = row[user_aug_idx]
+            aug_col = col[user_aug_idx]
             for user, item in zip(aug_row, aug_col):
                 item_codes = all_item_codes[item] + self.n_items + self.n_users + self.n_user_codes
                 item_codes = item_codes.tolist()
                 aug_inter_row.extend([user]* len(item_codes))
                 aug_inter_col.extend(item_codes)
 
-            aug_row = row[user_aug_idx]
-            aug_col = col[user_aug_idx]
+            aug_row = row[item_aug_idx]
+            aug_col = col[item_aug_idx]
             for user, item in zip(aug_row, aug_col):
                 user_codes = all_user_codes[user] + self.n_users
                 item = item + self.n_users + self.n_user_codes
@@ -432,7 +431,7 @@ class CoGCL(GeneralGraphRecommender):
 
     def calculate_cl_loss(self, x1, x2):
         assert x1.size(0) == x2.size(0)
-        B = x1.size(0)
+
         x1, x2 = F.normalize(x1, dim=-1), F.normalize(x2, dim=-1)
 
         sim_12 = torch.mm(x1, x2.T)
