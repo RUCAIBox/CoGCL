@@ -2,7 +2,7 @@ dataset: 'gowalla'
 data_path: '../datasets/'
 save_dataset: True
 
-gpu_id: '6'
+gpu_id: '0'
 worker: 8
 
 # Atomic File Format
@@ -48,11 +48,7 @@ benchmark_filename: [train, valid, test]
 
 
 epochs: 500
-stopping_step: 10
-min_epoch: 100
-
-embedding_size: 64
-hidden_size: 64
-n_layers: 3
+stopping_step: 15
+min_epoch: 80
 
 

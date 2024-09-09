@@ -2,7 +2,7 @@ dataset: 'alibaba'
 data_path: '../datasets/'
 save_dataset: True
 
-gpu_id: '7'
+gpu_id: '0'
 worker: 8
 
 # Atomic File Format
@@ -49,12 +49,14 @@ train_neg_sample_args:
 benchmark_filename: [train, valid, test]
 
 
-embedding_size: 64
-hidden_size: 64
-n_layers: 3
+user_code_num: 4
+item_code_num: 4
+user_code_size: 512
+item_code_size: 512
+code_batch_size: 6400
 
-code_batch_size: 7000
 
-
-stopping_step: 10
+epochs: 500
+stopping_step: 15
+min_epoch: 40
 

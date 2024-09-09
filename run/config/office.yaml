@@ -51,14 +51,25 @@ train_neg_sample_args:
 benchmark_filename: [train, valid, test]
 
 
+user_code_num: 4
+item_code_num: 4
+user_code_size: 512
+item_code_size: 512
+code_batch_size: 6400
 
-embedding_size: 64
-hidden_size: 64
-n_layers: 3
 
-epochs: 1000
+epochs: 500
 stopping_step: 15
 min_epoch: 40
+
+
+reg_weight: 1e-06
+drop_p: 0.1
+vq_loss_weight: 1
+cl_weight: 1
+sim_cl_weight: 0.2
+graph_replace_p: 0.2
+graph_add_p: 0.5
 
 
 

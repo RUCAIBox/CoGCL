@@ -2,8 +2,7 @@ dataset: 'instrument'
 data_path: '../datasets/'
 save_dataset: True
 
-#seed: 2024
-gpu_id: '7'
+gpu_id: '0'
 worker: 8
 
 # Atomic File Format
@@ -51,32 +50,10 @@ benchmark_filename: [train, valid, test]
 
 
 
-epochs: 1000
+epochs: 500
 stopping_step: 15
 min_epoch: 50
 
-
-reg_weight: 1e-04
-
-
-user_code_num: 4
-item_code_num: 4
-user_code_size: 256
-item_code_size: 256
-code_batch_size: 10240
-
-
-vq_loss_weight: 5.0
-cl_weight: 0.1
-sim_cl_weight: 0.02
-cl_tau: 0.2
-
-data_aug_delay: 0
-graph_replace_p: 0.3
-graph_add_p: 0.2
-
-drop_p: 0.3
-drop_fwd: True
 
 
 

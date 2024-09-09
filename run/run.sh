@@ -2,7 +2,7 @@
 
 
 MODEL=CoGCL
-DADASET=instrument
+DADASET=office
 config=./config/${DADASET}.yaml
 
 python ../run_recbole_gnn.py \
