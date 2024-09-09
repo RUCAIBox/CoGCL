@@ -13,14 +13,14 @@ In this paper, we propose CoGCL, a reliable and informative graph CL approach ai
 ## Requirements
 
 ```
-torch==2.2.1+cu12.4
+torch==2.2.1+cu124
 recbole
 pyg
 ```
 
 ## Datasets
 
-You can find all the datasets we used in the `dataset` folder. Each dataset contains the following files:
+You can find all the datasets we used in [Google Drive](https://drive.google.com/file/d/1uo-aZ9V5SGQGkJkptprGEyk4vdKjj_6N/view?usp=sharing). Please download the file and unzip it to the current folder. Each dataset contains the following files:
 
 ```
 dataset_name/
