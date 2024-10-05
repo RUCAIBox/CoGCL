@@ -361,6 +361,7 @@ class EMAVectorQuantizer(nn.Module):
         )
 
         self.embedding.data.copy_(centers)
+        self.embedding_avg.data.copy_(centers)
         self.initted = True
 
 
