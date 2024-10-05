@@ -46,7 +46,7 @@ bash run_hyper_office.sh
 
 Conduct a single experiment on a dataset:
 
-```
+```shell
 cd run
 bash run.sh
 ```
